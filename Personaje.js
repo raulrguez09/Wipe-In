@@ -1,5 +1,5 @@
-import * as THREE from '../libs/three.module.js'
-import * as TWEEN from '../libs/tween.esm.js'
+import * as THREE from './libs/three.module.js'
+import * as TWEEN from './libs/tween.esm.js'
 
 
 class Personaje extends THREE.Object3D {

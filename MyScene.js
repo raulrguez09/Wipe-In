@@ -1,8 +1,8 @@
 
 // Clases de la biblioteca
-import * as THREE from '../libs/three.module.js'
-import * as TWEEN from '../libs/tween.esm.js'
-import { TrackballControls } from '../libs/TrackballControls.js'
+import * as THREE from './libs/three.module.js'
+import * as TWEEN from './libs/tween.esm.js'
+import { TrackballControls } from './libs/TrackballControls.js'
 import { WipeIn } from './WipeIn.js'
 
 // Declaramos variables para los sonidos del juego

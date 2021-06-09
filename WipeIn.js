@@ -1,6 +1,6 @@
 
-import * as THREE from '../libs/three.module.js'
-import * as TWEEN from '../libs/tween.esm.js'
+import * as THREE from './libs/three.module.js'
+import * as TWEEN from './libs/tween.esm.js'
 import { Personaje } from './Personaje.js'
 import { Pendulo } from './Pendulo.js'
 import { Recorrido } from './Recorrido.js'
