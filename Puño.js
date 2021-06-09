@@ -1,6 +1,6 @@
-import * as THREE from '../libs/three.module.js';
-import * as TWEEN from '../libs/tween.esm.js';
-import { ThreeBSP } from '../libs/ThreeBSP.js';
+import * as THREE from './libs/three.module.js';
+import * as TWEEN from './libs/tween.esm.js';
+import { ThreeBSP } from './libs/ThreeBSP.js';
 
 class Puño extends THREE.Object3D{
     constructor(){
