@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Wipe In</title>
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave+Display&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="../libs/jquery.js"></script>
+    <script type="module" src="MyScene.js"></script>    
+    <style>
+        body{
+            margin: 0;
+            overflow: hidden; 
+        }
+    </style>
+</head>
+<body>
+    <style>
+        body{
+            margin: 0;
+            overflow: hidden; 
+        }
+        #msg {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            z-index: 100;
+            display:block;
+            color:white;
+            font-family:'Courier New', Courier, monospace;
+        }
+        #gameover,#win,#help {
+            display:none;
+            position: absolute;
+            width: 100%;
+            height: 1250px;
+            background-image: url("/Wipe-In/img/fondo.jpg");
+            background-repeat: no-repeat;
+            background-size:cover;
+            background-position: center;
+        }
+        #init {
+            position: absolute;
+            width: 100%;
+            height: 1250px;
+            background-image: url("/Wipe-In/img/fondo.jpg");
+            background-repeat: no-repeat;
+            background-size:cover;
+            background-position: center;
+        }
+        p{
+            text-align: center;
+            font-size: 5em;
+            color: #A7DA3D;
+            font-family: 'Sedgwick Ave Display', cursive;
+        }
+        #vidas{
+            position: absolute;
+            top: 2%;
+            left: 2%;
+            display: flex; 
+            flex-direction: row;
+            width: 400px;
+            height: 130px;
+        }
+        #init button{
+            width: 500px;
+            border: none;
+            background-color: transparent;
+            color:#67c0d6;
+            font-size: 3em;
+            font-family: 'Sedgwick Ave Display', cursive;
+            cursor: pointer;
+        }
+        #gameover button{
+            width: 500px;
+            border: none;
+            background-color: transparent;
+            color: #67c0d6;
+            font-size: 3em;
+            font-family: 'Sedgwick Ave Display', cursive;
+            cursor: pointer;
+        }
+        #win button{
+            width: 500px;
+            border: none;
+            background-color: transparent;
+            color:#67c0d6;
+            font-size: 3em;
+            font-family: 'Sedgwick Ave Display', cursive;
+            cursor: pointer;
+        }
+        #help button{
+            width: 500px;
+            border: none;
+            background-color: transparent;
+            color:#67c0d6;
+            font-size: 3em;
+            font-family: 'Sedgwick Ave Display', cursive;
+            cursor: pointer;
+        }
+        #audio button{
+            width: 100px;
+            height: 100px;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+        }
+        #empezar , #volverJugar ,#volverJugar1{
+            position: absolute;
+            top: 20%;
+            left: 20%;
+        }
+        #volverMenu, #volverMenu1, #volverMenu2{
+            position: absolute;
+            top: 30%;
+            left: 20%;
+        }
+        #ayuda{
+            position: absolute;
+            top: 65%;
+            left: 23%;
+        }
+        #cambiar{
+            position: absolute;
+            top: 30%;
+            right: 15%;
+        }
+        #activar , #desactivar{
+            position: absolute;
+            top: 2%;
+            right: 10%;
+        }
+        #subirVolumen{
+            position: absolute;
+            top: 2%;
+            right: 20%;
+        }
+        #bajarVolumen{
+            position: absolute;
+            top: 2%;
+            right: 15%;
+        }
+        #audio img{
+            width: 100px;
+        }
+        #text{
+            color:khaki;
+            font-size: 3em;
+            font-family: 'Sedgwick Ave Display', cursive;
+            width: 20%;
+            position: absolute;
+            top: 15%;
+            right: 15%;
+        }
+        #contr{
+            text-align: center;
+            font-size: 5em;
+            color: #A7DA3D;
+            font-family: 'Sedgwick Ave Display', cursive;
+            position: absolute;
+            top: 40%;
+            right: 18%;
+        }
+        #contr1{
+            color:khaki;
+            font-size: 3em;
+            font-family: 'Sedgwick Ave Display', cursive;
+            width: 20%;
+            position: absolute;
+            top: 51%;
+            right: 15%;
+        }
+        #contr2{
+            color:khaki;
+            font-size: 3em;
+            font-family: 'Sedgwick Ave Display', cursive;
+            width: 20%;
+            position: absolute;
+            top: 56%;
+            right: 15%;
+        }
+        .color{
+            position: absolute;
+            top: 30%;
+            right: 21%;
+        }
+        
+        
+    </style>
+<!-- Div which will hold the Output -->
+<div id="WebGL-output">
+    <div id="init">
+        <p>WIPE IN</p>
+        <button type="button" id="empezar">Empezar Partida</button>
+        <button type="button" id="cambiar">Cambiar color personaje</button>
+        <p class="color" id="c0">Verde</p>
+        <p class="color" id="c1" style="display: none;color:#67c0d6;">Azul</p>
+        <p class="color" id="c2" style="display: none;color:#800000;">Rojo</p>
+        <p class="color" id="c3" style="display: none;color:mediumpurple;">Especial</p>
+        <button type="button" id="ayuda">Ayuda</button>
+    </div>
+    <div id="help">
+        <p>AYUDA</p>
+        <p id="text">WIPE IN, es un juego de recorrido lineal en el cuál deberás sortear todos los obstáculos  que hay y llegar al final para ganar</p>
+        <p id="contr">CONTROLES</p>
+        <button type="button" id="volverMenu">Volver al menú principal</button>
+        <p id="contr1">W/A/S/D - MOVIMIENTO</p>
+        <p id="contr2">ESPACIO - SALTO</p>
+    </div>
+    <div id="gameover">
+        <p>GAME OVER</p>
+        <button type="button" id="volverJugar">Volver a jugar</button>
+        <button type="button" id="volverMenu1">Volver al menú principal</button>
+    </div>
+    <div id="win">
+        <p>ENHORABUENA, HAS GANADO</p>
+        <button type="button" id="volverJugar1">Volver a jugar</button>
+        <button type="button" id="volverMenu2">Volver al menú principal</button>
+    </div>
+    <div id="audio">
+        <button type="button" id="subirVolumen"><img src="/Wipe-In/img/subirVol.png" alt=""></button>
+        <button type="button" id="bajarVolumen"><img src="/Wipe-In/img/bajarVol.png" alt=""></button>
+        <button type="button" id="activar" style="display: none;"><img src="/Wipe-In/img/volumen.png" alt=""></button>
+        <button type="button" id="desactivar"><img src="/Wipe-In/img/mute.png" alt=""></button>
+    </div>
+    <div id="vidas">
+        <img src="/Wipe-In/img/cora.png" id="vida1" alt="" style="display: none;"></id>
+        <img src="/Wipe-In/img/cora.png" id="vida2" alt="" style="display: none;"></id>
+        <img src="/Wipe-In/img/cora.png" id="vida3" alt="" style="display: none;"></id>
+    </div>
+</div>
+</body>
+</html>
